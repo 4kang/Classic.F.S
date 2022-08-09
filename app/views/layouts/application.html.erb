@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Classicfs</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-s">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,27 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff8dc">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>Classic.F.S</span>
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <%if customer_signed_in? %>
+              <li>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                マイページ
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
