@@ -1,0 +1,7 @@
+登録内容編集
+
+<%= form_with model: @customer, url: customers_my_page_edit_path do |f| %>
+氏名<%= f.text_field :last_name %><%= f.text_field :first_name %>
+氏名(カナ)<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+
+<% end %>
