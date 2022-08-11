@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
-    
+    @customer = current_customer
   end
   
   def unsubscribe
