@@ -1,0 +1,14 @@
+ジャンル一覧/追加
+
+<%= form_with model: @genre, url: admin_genres_path do |f| %>
+ジャンル名<%= f.text_field :genre_name, autofoucus: true, autocomplete: "genres", placeholder: "ジャンル名" %>
+<%= f.submit '登録' %>
+<% end %>
+
+ジャンル
+<% @genres.each do |genre| %>
+
+<%= genre.genre_name %>
+<%= link_to "編集", edit_admin_genre_path(genre.id) %>
+
+<% end %>
