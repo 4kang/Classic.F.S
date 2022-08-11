@@ -1,1 +1,16 @@
 <h1>TOP画面</h1>
+
+
+カテゴリ
+
+新着情報
+<% @items.first(4).each do |item| %>
+ <%= link_to item_path(item.id) do %>
+  <%= image_tag item.get_image(200,280) %>
+ <% end %>
+ 
+ <%= item.item_name %>
+ 
+ <%= item.add_tax_on_price.to_s(:delimited) %>円(税込)
+ 
+ <% end %>

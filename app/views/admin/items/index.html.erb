@@ -7,6 +7,11 @@
 税抜価格<%= item.price %>
 ジャンル<%= item.genre.genre_name %>
 販売ステータス
+<% if item.is_active == true %>
+販売中
+<% else %>
+販売停止中
+<% end %>
 
 
 
