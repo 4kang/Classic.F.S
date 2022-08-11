@@ -5,7 +5,7 @@
 商品ID<%= item.id %>
 商品名<%= link_to item.item_name, admin_item_path(item) %>
 税抜価格<%= item.price %>
-ジャンル<%= item.genre_name %>
+ジャンル<%= item.genre.genre_name %>
 販売ステータス
 
 
