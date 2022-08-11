@@ -1,0 +1,14 @@
+商品新規登録
+<%= form_with model: @item, url: admin_items_path do |f| %>
+
+商品画像<%= f.text_field :image, accept: "image/*" %>
+商品名<%= f.text_field :item_name %>
+説明文<%= f.text_area :introduction %>
+ジャンル名<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "--選択してください--"} %>
+税込価格<%= f.number_field :price %>円
+販売ステータス<%= f.radio_button :is_active, 0, checked: true %>販売中
+<%= f.radio_button :is_active, 1 %>販売停止中
+
+<%= f.submit '登録' %>
+
+<% end %>
