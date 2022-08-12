@@ -4,7 +4,8 @@
  <%= link_to item_path(item.id) do %>
   <%= image_tag item.get_image(200,240) %>
   <%= item.item_name %>
-  <%= item.add_tax_on_price.to_s(:delimited) %>円(税込)
+  <%= item.tax_include_price.to_s(:delimited) %>円(税込)
+
   <% end %>
 
 <% end %>

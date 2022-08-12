@@ -13,7 +13,8 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def add_tax_on_price
+# 税込価格
+  def tax_include_price
     (self.price * 1.10).round
   end
 

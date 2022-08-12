@@ -1,0 +1,17 @@
+ご注文内容
+<% @cart.each do |item| %>
+<%= image_tag item.get_image(50,50) %>
+商品名<%= item.item_name %>
+  単価(税込)￥<%= item.tax_include_price.to_s(:delimited) %>
+  数量
+  <%= form_with model: [:public, item], url: cart_item_path(item.id), method: :patch do |f| %>
+   小計<%= f.hidden_field :item_id, :value => item.id %>
+   <%=f.select :amount ,*[1..10] %>
+   <%= f.submit "変更" %>
+  <% end %>
+カートを空にする<%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete %>
+合計金額
+
+買い物を続ける
+
+購入する
