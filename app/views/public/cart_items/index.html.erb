@@ -1,3 +1,4 @@
+<!--カート内-->
 ご注文内容
 <% @cart.each do |item| %>
 <%= image_tag item.get_image(50,50) %>
@@ -9,9 +10,15 @@
    <%=f.select :amount ,*[1..10] %>
    <%= f.submit "変更" %>
   <% end %>
+
+<%= item.subtotal %>
+<%= link_to "取消", cart_item_path(item), method: :delete %>
+<% @total += item.subtotal %>
+<% end %>
+  
+<!--カート外-->
 カートを空にする<%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete %>
-合計金額
+合計金額<%= @total.to_s(:delimited) %>
 
-買い物を続ける
-
+<%= link_to '買い物を続ける', root_path %>
 購入する

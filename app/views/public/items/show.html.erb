@@ -4,3 +4,9 @@
 
 <%= @item.tax_include_price.to_s(:delimited) %>円(税込)
 
+<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+ <%= f.hidden_field :item_id, :value => @item.id %>
+ <%= f.submit "カートに入れる" %>
+
+<% end %>
+
