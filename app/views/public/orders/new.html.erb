@@ -1,0 +1,28 @@
+カートの中
+
+お届け先
+<%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+<%= f.radio_button :select_address, 0, checked: true %>
+<%= f.label :payment_method, "お届け先を選択してください" %>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+
+<%= f.radio_button :select_address, 2 %>
+<%= f.label :payment_method, "新しいお届け先" %>
+
+郵便番号(ハイフン無し)
+<%= f.text_field :post_code, id: "post_code" %>
+住所
+<%= f.text_field :address, id: "address" %>
+宛名
+<%= f.text_field :name, id: "" %>
+
+お支払い方法
+<%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+
+<%= f.submit "確認画面へ進む" %>
+
+<% end %>
