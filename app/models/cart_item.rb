@@ -5,7 +5,7 @@ class CartItem < ApplicationRecord
 
   # 税込価格
   def tax_include_price
-    (self.price * 1.10).round
+    (item.price * 1.10).round(0)
   end
 
   # +=、合計の表示方法

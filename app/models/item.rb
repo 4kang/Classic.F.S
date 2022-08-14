@@ -15,7 +15,7 @@ class Item < ApplicationRecord
 
 # 税込価格
   def tax_include_price
-    (self.price * 1.10).round
+    (price * 1.10).round(0)
   end
 
 end

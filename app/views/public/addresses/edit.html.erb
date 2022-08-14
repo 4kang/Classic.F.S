@@ -1,0 +1,13 @@
+配送先変更
+<%= form_with model: @address, local: true do |f| %>
+
+郵便番号(ハイフン無し)
+<%= f.text_field :post_code %>
+住所
+<%= f.text_field :address %>
+宛名
+<%= f.text_field :name %>
+
+<%= f.submit '保存' %>
+
+<% end %>

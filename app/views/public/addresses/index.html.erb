@@ -1,0 +1,25 @@
+お届け先登録/一覧
+<%= form_with model: @address, url: '/addresses', method: :post do |f| %>
+
+郵便番号(ハイフン無し)
+<%= f.text_field :post_code, id: "post_code" %>
+住所
+<%= f.text_field :address, id: "address" %>
+宛名
+<%= f.text_field :name, id: "" %>
+<%= f.submit "登録" %>
+<% end %>
+
+
+郵便番号
+住所
+宛名
+<%= @addresses.each do |address| %>
+ <%= address.post_code %>
+ <%= address.address %>
+ <%= address.name %>
+
+ <%= link_to '編集', edit_address_path(address.id) %>
+ <%= link_to '削除', address_path(address.id), method: :delete %>
+
+<% end %>
