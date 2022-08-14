@@ -2,7 +2,12 @@
 
 お届け先
 <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+
 <%= f.radio_button :select_address, 0, checked: true %>
+  <%= f.label :payment_method, "ご自身の住所" %>
+〒<%= @customer.postal_code %><%= @customer.address %>
+
+<%= f.radio_button :select_address, 1 %>
 <%= f.label :payment_method, "お届け先を選択してください" %>
 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
 

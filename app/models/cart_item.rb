@@ -1,7 +1,6 @@
 class CartItem < ApplicationRecord
 
   belongs_to :item
-  belongs_to :customer
 
   # 税込価格
   def tax_include_price

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
     root :to => 'homes#top'
+    # address
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     # customer
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
@@ -28,8 +30,7 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :create, :index, :show]
-    # address
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+
   end
 
   namespace :admin do
