@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  
+  get 'search' => 'searches#search'
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :create, :index, :show]
-
   end
 
   namespace :admin do

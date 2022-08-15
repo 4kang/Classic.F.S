@@ -6,6 +6,6 @@ Eメールアドレス <%= @customer.email %>
 郵便番号 <%= @customer.postal_code %>
 住所 <%= @customer.address %>
 電話番号<%= @customer.telephone_number %>
-
+<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 <%= link_to "編集", customers_my_page_edit_path %>
 <%= link_to "退会", customers_unsubscribe_path %>
