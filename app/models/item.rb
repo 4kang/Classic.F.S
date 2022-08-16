@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :order_details
   belongs_to :genre
+  belongs_to customer, foreign_key: 'customer_id'
+
   has_one_attached :image
 
   def get_image(width, height)
