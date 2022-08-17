@@ -1,31 +1,9 @@
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">All Items</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= render "public/homes/navbar" %>
 <div class="container">
  <div class="row">
-  カテゴリ
-
+  <div class="mt-5">
+   <%= render "public/items/genre", genres: @genres %>
+  </div>
 
 新着情報
 <% @items.first(4).each do |item| %>
@@ -33,7 +11,7 @@
   <%= image_tag item.get_image(200,280) %>
  <% end %>
 
- <%= item.item_name %>
+ <%= item.name %>
 
  <%= item.tax_include_price.to_s(:delimited) %>円(税込)
 

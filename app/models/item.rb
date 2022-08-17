@@ -19,5 +19,13 @@ class Item < ApplicationRecord
   def tax_include_price
     (price * 1.10).round(0)
   end
-  
+
+  def self.search_for(model, search_value)
+    if model == "item"
+      Item.where("name LIKE ?", "%#{search_value}%")
+    else
+      Item.where(genre_id: search_value)
+    end
+  end
+
 end
