@@ -1,9 +1,9 @@
 class Item < ApplicationRecord
 
-  has_many :cart_items
-  has_many :order_details
+  has_many :favorites,     dependent: :destroy
+  has_many :cart_items,    dependent: :destroy
+  has_many :order_details, dependent: :destroy
   belongs_to :genre
-
 
   has_one_attached :image
 
@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   def tax_include_price
     (price * 1.10).round(0)
   end
-
+  
 end
