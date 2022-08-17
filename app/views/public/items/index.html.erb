@@ -1,11 +1,9 @@
 商品一覧
 <%= @items.each do |item| %>
 
- <%= link_to item_path(item.id) do %>
-  <%= image_tag item.get_image(200,240) %>
-  <%= item.item_name %>
-  <%= item.tax_include_price.to_s(:delimited) %>円(税込)
-
+ <%= link_to item_path(item) do %>
+   <%= image_tag item.get_image(200,240) %>
+   <%= item.name %>
   <% end %>
-
+  <%= item.tax_include_price.to_s(:delimited) %>円(税込)
 <% end %>
