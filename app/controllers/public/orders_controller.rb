@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @item = OrderDetail.where(order_id:@order.id)
+    @item = OrderDetail.where(order_id: @order.id)
   end
 
   private

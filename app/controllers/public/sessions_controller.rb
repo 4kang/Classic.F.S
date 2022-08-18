@@ -24,4 +24,19 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  protected
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
+  def reject_customers
+    @customer = current_customer
+    if @customer
+      if @customer.valid_password? && (@customer.is_deleted == false)
+        redirect_to new_customer_registration
+      end
+    end
+  end
+
 end

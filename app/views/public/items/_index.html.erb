@@ -1,0 +1,13 @@
+<div class="d-flex flex-wrap justify-content-around">
+  <% items.each do |item| %>
+  <div class="favorite-reference-position">
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.get_image(200,200) %>
+      <div class="card-body", style="color:black">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text"><%= item.tax_include_price.to_s(:delimited) %>円(税込)</p>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

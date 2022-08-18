@@ -2,18 +2,16 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="pb-0">
-          カテゴリ
-        </th>
+        <th class="text-black-50 pb-0">Category</th>
       </tr>
     </thead>
     <tbody>
       <% genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= link_to genre.name, item_search_items_path(genre_id: genre.id, model: "genre") %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= link_to genre.name, item_search_items_path(genre_id: genre.id, model: "genre"), class: "button tag light-shadow py-3",style: "width: 100%" %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

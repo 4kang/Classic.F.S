@@ -1,26 +1,23 @@
 <%= render "public/homes/navbar" %>
 <div class="container">
  <div class="row">
-  <div class="mt-5">
-   <%= render "public/items/genre", genres: @genres %>
+  <div class="col-2">
+    <div class="mt-4">
+      <%= render "public/items/genre", genres: @genres %>
+    </div>
   </div>
 
-  <div class='mx-auto mt-5'>
-   <div class="text-center">
-    New Items
-   </div>
-   <div class="mt-5">
-    <% @items.first(4).each do |item| %>
-      <%= link_to item_path(item.id) do %>
-       <%= image_tag item.get_image(200,280) %>
-      <% end %>
-
-     <%= item.name %>
-     <%= item.tax_include_price.to_s(:delimited) %>円(税込)
-    <% end %>
-   </div>
+  <div class="col-10">
+   <h2 class="text-center">New Items</h2>
   </div>
-
+  <div class="col-6 mt-4">
+   <div class="my-5">
+       <%= render "public/items/index", items: @items %>
+       <div class="text-center index-link">
+        <%= link_to "more",items_path, class: "btn btn-template-index light-shadow py-3",style: "width: 60%"%>
+       </div>
+    </div>
+  </div>
  </div>
 </div>
 
