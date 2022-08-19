@@ -20,12 +20,18 @@ class Item < ApplicationRecord
     (price * 1.10).round(0)
   end
 
+# ジャンル検索
   def self.search_for(model, search_value)
     if model == "item"
       Item.where("name LIKE ?", "%#{search_value}%")
     else
       Item.where(genre_id: search_value)
     end
+  end
+
+  # いいね機能
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
 end

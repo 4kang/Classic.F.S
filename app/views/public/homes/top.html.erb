@@ -1,23 +1,20 @@
 <%= render "public/homes/navbar" %>
-<div class="container">
- <div class="row">
-  <div class="col-2">
-    <div class="mt-4">
-      <%= render "public/items/genre", genres: @genres %>
+  <div class="container">
+  <div class="row">
+    <div class="col-2">
+      <div class="mt-4">
+        <%= render 'public/items/genre',genres: @genres %>
+      </div>
     </div>
-  </div>
+    <div class="col-10 mt-4">
 
-  <div class="col-10">
-   <h2 class="text-center">New Items</h2>
-  </div>
-  <div class="col-6 mt-4">
-   <div class="my-5">
-       <%= render "public/items/index", items: @items %>
-       <div class="text-center index-link">
-        <%= link_to "more",items_path, class: "btn btn-template-index light-shadow py-3",style: "width: 60%"%>
-       </div>
+      <div class="my-5">
+        <h3 class="title title-text text-center">New Item</h3>
+        <%= render "public/items/index", items: @items %>
+        <div class="text-center index-link">
+          <%= link_to "more  >>",items_path, class: "btn btn-template-index light-shadow py-3",style: "width: 60%"%>
+        </div>
+      </div>
     </div>
   </div>
- </div>
 </div>
-
