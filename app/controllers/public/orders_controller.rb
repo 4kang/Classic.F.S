@@ -25,10 +25,10 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def comfirm
+  def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
-      @order.post_code = current_customer.post_code
+      @order.post_code= current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"

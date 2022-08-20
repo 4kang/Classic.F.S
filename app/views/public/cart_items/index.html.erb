@@ -2,7 +2,7 @@
 ご注文内容
 <% @cart.each do |item| %>
 <%= image_tag item.item.get_image(50,50) %>
-商品名<%= item.item.item_name %>
+商品名<%= item.item.name %>
   単価(税込)￥<%= item.tax_include_price.to_s(:delimited) %>
   数量
   <%= form_with model: [:public, item], url: cart_item_path(item.id), method: :patch do |f| %>
