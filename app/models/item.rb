@@ -9,7 +9,13 @@ class Item < ApplicationRecord
 
   def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
+
+      if Rails.env.productiont?
+        file_path = Rails.root.join(asset_path("images/no_image.jpg")).to_s
+      else
+        file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      end
+
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed
@@ -31,7 +37,7 @@ class Item < ApplicationRecord
 
   # いいね機能
   def favorited_by?(customer)
-    favorites.exists?(customer_id: customer.id)
+    favorites.exisits
   end
 
 end
