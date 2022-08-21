@@ -37,7 +37,7 @@ class Item < ApplicationRecord
 
   # いいね機能
   def favorited_by?(customer)
-    favorites.exisits
+    favorites.exists?(customer_id: customer.id)
   end
 
 end
