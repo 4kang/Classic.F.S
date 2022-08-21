@@ -59,11 +59,12 @@
     <%= form_with model: @order, url: orders_path, local: true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
-        <%= f.hidden_field :shipping_cost, value: 800 %>
+        <%= f.hidden_field :shipping_fee, value: 800 %>
         <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :postal_code %>
+        <%= f.hidden_field :post_code %>
         <%= f.hidden_field :address %>
-        <%= f.hidden_field :total_payment, value: @total + 800 %>
+        <%= f.hidden_field :telephone_number %>
+        <%= f.hidden_field :pay_total, value: @total + 800 %>
         <%= f.submit "注文を確定する" %>
     <% end %>
 </div>

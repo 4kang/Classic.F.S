@@ -31,11 +31,13 @@ class Public::OrdersController < ApplicationController
       @order.post_code= current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
+      @order.telephone_number = current_customer.telephone_number
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
+      @order.telephone_number = @address.telephone_number
     end
     @cart_items = current_customer.cart_items.all
   end
@@ -57,7 +59,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_code, :address, :name, :customer_id, :shipping_fee, :pay_total)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :customer_id, :shipping_fee, :pay_total, :telephone_number)
   end
 
 end
