@@ -1,1 +1,61 @@
-退会確認
+<div style="padding: 10px; border: solid 1px #ccc;">
+  <div class="mx-auto col-lg-8">
+   <div class="container mt-5">
+   <h5><%= @customer.full_name %>さんの登録情報</h5>
+   </div>
+  </div>
+</div>
+
+ <div class="container mt-5">
+  <div class="row">
+
+     <table class="table table-bordered">
+       <thead>
+         <tr>
+          <td style="background-color:#faf0e6">氏名</td>
+          <td><%= @customer.full_name %></td>
+         </tr>
+         <tr>
+          <td style="background-color:#faf0e6">Eメールアドレス</td>
+          <td><%= @customer.email %></td>
+         </tr>
+         <tr>
+          <td style="background-color:#faf0e6">郵便番号</td>
+          <td><%= @customer.post_code %></td>
+         </tr>
+         <tr>
+          <td style="background-color:#faf0e6">住所</td>
+          <td><%= @customer.address %></td>
+         </tr>
+         <tr>
+          <td style="background-color:#faf0e6">電話番号</td>
+          <td><%= @customer.telephone_number %></td>
+         </tr>
+       </thead>
+     </table>
+
+     <div class="container mt-5">
+ <div class="row">
+     <div class="col-md-10 col-md-offset-1">
+      <div class="text-center">
+       <strog>本当に退会しますか？</strog>
+      </div>
+     </div>
+ </div>
+
+ <div class="row">
+     <div class="col-md-10 col-md-offset-1">
+      <div class="text-center">
+       退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。
+      </div>
+     </div>
+ </div>
+
+ <div class="col-md-10 col-md-offset-1">
+      <div class="text-center">
+       <%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary mr-2" %>
+       <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger" %>
+      </div>
+ </div>
+
+</div>
