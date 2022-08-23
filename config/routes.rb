@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # 顧客用
   devise_for :customers, controllers: {
     registrations: "public/registrations",
+    passwords: 'public/passwords',
     sessions: 'public/sessions'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     patch 'customers/my_page/complete' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
+    # ゲストログイン
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
     # item
     resources :items, only:[:index, :show] do
       resource :favorites, only:[:create, :destroy]
