@@ -1,11 +1,11 @@
 <div class="d-flex flex-wrap justify-content-around">
   <% items.each do |item| %>
   <div class="favorite-reference-position">
-    <%= link_to item_path(item.id) do %>
-      <%= image_tag item.get_image(200,200) %>
-      <div class="card-body", style="color:black">
+    <%= link_to item_path(item.id), class: "card-img-top" do %>
+      <%= image_tag item.get_image(200,280), class: "card-img-top" %>
+      <div class="card-body", style="color:black; background-color:#ffe2d5">
         <h5 class="card-title"><%= item.name %></h5>
-        <p class="card-text"><%= item.tax_include_price.to_s(:delimited) %>円(税込)</p>
+        <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
       </div>
     <% end %>
   </div>

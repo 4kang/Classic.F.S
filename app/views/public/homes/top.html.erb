@@ -1,3 +1,4 @@
+
   <div class="container">
   <div class="row">
     <div class="col-2">
@@ -6,15 +7,10 @@
       </div>
     </div>
     <div class="col-10 mt-4">
-
-      <div class="my-5">
-        <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
-        <h3 class="title title-text text-center">New Item</h3>
         <%= render "public/items/index", items: @items %>
         <div class="text-center index-link">
           <%= link_to "more  >>",items_path %>
         </div>
-      </div>
     </div>
   </div>
 </div>

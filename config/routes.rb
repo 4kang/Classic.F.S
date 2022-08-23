@@ -23,7 +23,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     # ゲストログイン
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    devise_scope :customer do
+     post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    end
+
     # item
     resources :items, only:[:index, :show] do
       resource :favorites, only:[:create, :destroy]

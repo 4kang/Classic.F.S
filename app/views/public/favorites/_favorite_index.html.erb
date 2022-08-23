@@ -1,21 +1,32 @@
-<div class="text-center">
-  <h4>お気に入り一覧</h4>
-  <div id="favorite-scroll">
-    <% current_customer.favorite_items.each do |item| %>
-      <div class="favorite-reference-position-side">
-        <%= link_to item_path(item.id), class: "mb-3 card item-card-side", style: "padding: 0;" do %>
-          <div class="row">
-            <div class="col-md-4">
-            <%= image_tag item.get_image(100,115), class: "card-img", style: "height: 100px; width: 115px;" %>
-            </div>
-          <div class="col-md-8">
-            <div class="card-body", style="height: 10px;color:black;">
-              <h5 class="card-title"><%= item.name %></h5>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
-    <% end %>
+<div class="container mt-5">
+ <div class="text-center">
+  <h5>お気に入り一覧</h5>
+  <div>
+    <table class="table table-bordered">
+       <thead style="background-color:#faf0e6">
+         <tr>
+           <th scope="col"></th>
+           <th colspan="2">商品名</th>
+           <th scope="col">単価</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% current_customer.favorite_items.each do |item| %>
+         <tr>
+           <td>
+             <%= link_to item_path(item.id) do %>
+             <%= image_tag item.get_image(200,200) %>
+             <% end %>
+             </td>
+           <td><%= item.name %></td>
+           <td><%= item.introduction %></td>
+           <td><%= item.tax_include_price.to_s(:delimited) %>円(税込)</td>
+         </tr>
+
+         <% end %>
+       </tbody>
+     </table>
+
   </div>
+ </div>
 </div>

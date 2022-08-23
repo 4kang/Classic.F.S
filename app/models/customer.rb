@@ -33,6 +33,13 @@ class Customer < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = 'test'
+      customer.first_name = 'test'
+      customer.last_name_kana = 'test'
+      customer.first_name_kana = 'test'
+      customer.post_code = 'test'
+      customer.address = 'test'
+      customer.telephone_number = 'test'
     end
   end
 
