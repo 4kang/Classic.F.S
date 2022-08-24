@@ -11,9 +11,12 @@
         <h4>New Item</h4>
       </div>
         <%= render "public/items/index", items: @items %>
-        <div class="text-center index-link mt-3">
-          <%= link_to "more  >>",items_path, class: "btn btn-outline-dark" %>
+        <div class="col-10">
+          <div class="text-center index-link mt-3">
+           <%= link_to "more  >>",items_path, class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
+          </div>
         </div>
+
     </div>
   </div>
 </div>

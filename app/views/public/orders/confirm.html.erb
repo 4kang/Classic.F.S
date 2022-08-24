@@ -1,6 +1,5 @@
 <div class="container mt-5">
-    <h2>注文情報確認</h2>
-
+    <h4 class="text-center">注文情報確認</h4>
 
     <div class="row border border-dark border-bottom-0">
      <div class="col text-center border-right border-dark" style="background-color:#faf0e6">商品名</div>
@@ -30,23 +29,29 @@
      <div class="row mt-5">
       <div class="col-4">
         <div class="row border border-dark">
-            <div class="col-md-4 border-bottom border-dark" style="background-color:#faf0e6">
+            <div class="col-md-4" style="background-color:#faf0e6">
               送料
             </div>
-            <div class="col-md-6 border-bottom">
+            <div class="col-md-6">
                 800円
             </div>
-            <div class="col-md-4" style="background-color:#faf0e6">
+        </div>
+      </div>
+     </div>
+     <div class="row">
+       <div class="col-4">
+         <div class="row border border-dark border-top-0">
+           <div class="col-md-4" style="background-color:#faf0e6">
               商品合計
             </div>
             <div class="col-md-6">
             <%= @total %>円
             </div>
-　　    </div>
-      </div>
+         </div>
+       </div>
      </div>
 
-     <div class="row mt-5 border border-dark border-bottom-0">
+     <div class="row mt-5 border border-dark">
         <div class="col-4" style="background-color:#faf0e6">
             <p class="text-right">支払い方法</p>
         </div>
@@ -54,12 +59,36 @@
             <%= @order.payment_method_i18n %>
         </div>
     </div>
-    <div class="row border border-dark">
+    <div class="row border border-dark border-top-0">
         <div class="col-4" style="background-color:#faf0e6">
-            <p class="text-right">お届け先</p>
+            <p class="text-right">郵便番号</p>
         </div>
         <div class="col-6">
-            〒<%= @order.post_code %>　<%= @order.address %>　<%= @order.name %>
+            〒<%= @order.post_code %>
+        </div>
+    </div>
+    <div class="row border border-dark border-top-0">
+        <div class="col-4" style="background-color:#faf0e6">
+            <p class="text-right">住所</p>
+        </div>
+        <div class="col-6">
+            <%= @order.address %>
+        </div>
+    </div>
+    <div class="row border border-dark border-top-0">
+        <div class="col-4" style="background-color:#faf0e6">
+            <p class="text-right">氏名</p>
+        </div>
+        <div class="col-6">
+            <%= @order.name %>
+        </div>
+    </div>
+    <div class="row border border-dark border-top-0">
+        <div class="col-4" style="background-color:#faf0e6">
+            <p class="text-right">電話番号</p>
+        </div>
+        <div class="col-6">
+            <%= @order.telephone_number %>
             <%= form_with model: @order, url: orders_path, local: true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
@@ -71,7 +100,7 @@
         <%= f.hidden_field :pay_total, value: @total + 800 %>
         </div>
     </div>
-    <%= f.submit "注文を確定する", class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
+    <%= f.submit "注文を確定する", class: "btn btn-block btn-lg text-light mt-3", style: "background-color:#d2b48c" %>
     <% end %>
 
 </div>

@@ -7,6 +7,8 @@
 <%= f.text_field :address, id: "address" %>
 宛名
 <%= f.text_field :name, id: "" %>
+電話番号
+<%= f.text_field :telephone_number, id: "telephone_number" %>
 <%= f.submit "登録" %>
 <% end %>
 
@@ -14,10 +16,11 @@
 郵便番号
 住所
 宛名
-<%= @addresses.each do |address| %>
+<% @addresses.each do |address| %>
  <%= address.post_code %>
  <%= address.address %>
  <%= address.name %>
+ <%= address.telephone_number %>
 
  <%= link_to '編集', edit_address_path(address.id) %>
  <%= link_to '削除', address_path(address.id), method: :delete %>

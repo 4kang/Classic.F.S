@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>注文履歴一覧</h2>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>注文日</th>
+                <th>配送先</th>
+                <th>注文商品</th>
+                <th>支払い金額</th>
+                <th>ステータス</th>
+                <th>注文詳細</th>
+            </tr>
+        </thead>
+        <% @order.each do |order| %>
+        <tbody>
+            <tr>
+                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+                <td>〒<%= order.post_code %><br><%= order.address%><br><%= order.name %><%= order.telephone_number %></td>
+                <td><%@item.each do |item| %><% if item.order_id == order.id %><%= item.item.name %><br><% end %><% end %></td>
+                <td><%= order.pay_total %>円</td>
+                <td><%= order.status_i18n %></td>
+                <td><%= link_to "表示する", order_path(order), class: 'btn btn-success' %></td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div>
