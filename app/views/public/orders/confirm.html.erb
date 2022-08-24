@@ -1,62 +1,66 @@
-<div class="container">
+<div class="container mt-5">
     <h2>注文情報確認</h2>
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>商品名</th>
-                        <th>単価（税込）</th>
-                        <th>数量</th>
-                        <th>小計</th>
-                    </tr>
-                </thead>
-                <% @total=0 %>
-                <% @cart_items.each do |cart| %>
-                <tbody>
-                    <tr>
-                        <td><%= image_tag cart.item.get_image(50,50) %><%= cart.item.name %></td>
-                        <td><%= (cart.item.tax_include_price).to_s(:delimited) %>円</td>
-                        <td><%= cart.amount %></td>
-                        <td><%= (cart.item.tax_include_price*cart.amount).to_s(:delimited) %>円</td>
-                        <% @total += cart.item.tax_include_price*cart.amount %>
-                    </tr>
-                </tbody>
-                <% end %>
-            </table>
-        </div>
-        <div class="col">
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>送料</th>
-                        <th>商品合計</th>
-                        <th>請求金額</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>800円</td>
-                        <td><%= @total %>円</td>
-                        <td><%= @total + 800 %>円</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+
+    <div class="row border border-dark border-bottom-0">
+     <div class="col text-center border-right border-dark" style="background-color:#faf0e6">商品名</div>
+     <div class="col text-center border-right border-dark" style="background-color:#faf0e6">単価(税込)</div>
+     <div class="col text-center border-right border-dark" style="background-color:#faf0e6">数量</div>
+     <div class="col text-center" style="background-color:#faf0e6">小計</div>
     </div>
-    <div class="row">
-        <strong>支払い方法</strong>
-        <div class="col">
+    <div class="row border border-dark">
+     <div class="col text-center border-right border-dark">
+       <% @total=0 %>
+       <% @cart_items.each do |cart| %>
+       <%= image_tag cart.item.get_image(100,120) %><%= cart.item.name %>
+     </div>
+     <div class="col d-flex align-items-center justify-content-center border-right border-dark">
+         <%= (cart.item.tax_include_price).to_s(:delimited) %>円
+     </div>
+     <div class="col d-flex align-items-center justify-content-center border-right border-dark">
+         <%= cart.amount %>
+     </div>
+     <div class="col d-flex align-items-center justify-content-center border-right border-dark">
+         <%= (cart.item.tax_include_price*cart.amount).to_s(:delimited) %>円
+         <% @total += cart.item.tax_include_price*cart.amount %>
+         <% end %>
+     </div>
+    </div>
+
+     <div class="row mt-5">
+      <div class="col-4">
+        <div class="row border border-dark">
+            <div class="col-md-4 border-bottom border-dark" style="background-color:#faf0e6">
+              送料
+            </div>
+            <div class="col-md-6 border-bottom">
+                800円
+            </div>
+            <div class="col-md-4" style="background-color:#faf0e6">
+              商品合計
+            </div>
+            <div class="col-md-6">
+            <%= @total %>円
+            </div>
+　　    </div>
+      </div>
+     </div>
+
+     <div class="row mt-5 border border-dark border-bottom-0">
+        <div class="col-4" style="background-color:#faf0e6">
+            <p class="text-right">支払い方法</p>
+        </div>
+        <div class="col-6">
             <%= @order.payment_method_i18n %>
         </div>
     </div>
-    <div class="row">
-        <strong>お届け先</strong>
-        <div class="col">
-            〒<%= @order.post_code %>　<%= @order.address %>　<%= @order.name %>
+    <div class="row border border-dark">
+        <div class="col-4" style="background-color:#faf0e6">
+            <p class="text-right">お届け先</p>
         </div>
-    </div>
-    <%= form_with model: @order, url: orders_path, local: true do |f| %>
+        <div class="col-6">
+            〒<%= @order.post_code %>　<%= @order.address %>　<%= @order.name %>
+            <%= form_with model: @order, url: orders_path, local: true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
         <%= f.hidden_field :shipping_fee, value: 800 %>
@@ -65,7 +69,10 @@
         <%= f.hidden_field :address %>
         <%= f.hidden_field :telephone_number %>
         <%= f.hidden_field :pay_total, value: @total + 800 %>
-        <%= f.submit "注文を確定する" %>
+        </div>
+    </div>
+    <%= f.submit "注文を確定する", class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
     <% end %>
+
 </div>
 
