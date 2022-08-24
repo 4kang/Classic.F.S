@@ -26,6 +26,16 @@
             <%= content_tag(:div, value, class: key) %>
             <% end %>
           </div>
+          <div class="collapse navbar-collapse justify-content-center">
+            <% if customer_signed_in? %>
+            <div class="navbar-nav text-light font-weight-bold d-inline-block">
+              ようこそ、<%= current_customer.last_name %>さん！
+            </div>
+            <% end %>
+          </div>
+          <span class="ml-auto col-3 d-none d-sm-block">
+            <%= render "public/items/search" %>
+          </span>
           <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
@@ -58,7 +68,7 @@
                 </li>
                 <% else %>
                 <li>
-                  <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "btn btn-danger" %>
+                  <%= link_to 'ゲストログイン', customers_guest_sign_in_path, method: :post, class: "btn btn-outline-light" %>
                 </li>
                 <li>
                   <%= link_to new_customer_session_path, class: "nav-link text-light" do %>

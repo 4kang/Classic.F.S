@@ -17,7 +17,7 @@ class Public::ItemsController < ApplicationController
     if @model == "item"
       if params[:content] == ""
         flash[:danger] = "商品名を入力してください"
-        redirect_to items_path
+        redirect_to root_path
       else
         @genres = Genre.all
         @search_name = params[:content]
