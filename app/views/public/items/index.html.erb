@@ -1,26 +1,21 @@
-<div class="container">
- <div class="row">
 
-  <div class="col-4 mt-4 mb-4">
-   <h3><strong>商品一覧</strong></h3>
-  </div>
- </div>
-
- <div class="row">
-  <%= @items.each do |item| %>
-  <div class="col-3 mb-4">
-   <div class="card-group">
-    <div class="card">
-     <%= link_to item_path(item), class: "card-img-top" do %>
-      <%= image_tag item.get_image(200,240), class: "card-img-top" %><br>
-     <% end %>
-     <div class="card-body">
-      <%= item.name %><br>
-      <%= item.tax_include_price.to_s(:delimited) %>円(税込)
-     </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-2">
+      <div class="mt-5">
+        <%= render 'public/items/genre',genres: @genres %>
+      </div>
     </div>
-   </div>
+    <div class="col-10 mt-4">
+      <div class="text-center mb-3">
+        <h4>Item</h4>
+      </div>
+        <%= render "public/items/index", items: @items %>
+        <div class="row">
+         <div class="col-12 d-flex justify-content-center  mt-5 ">
+          <%= paginate @items %>
+         </div>
+        </div>
+    </div>
   </div>
-  <% end %>
- </div>
 </div>

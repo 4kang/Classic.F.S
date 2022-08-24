@@ -1,13 +1,15 @@
 <div class="d-flex flex-wrap justify-content-around">
-  <% items.each do |item| %>
-  <div class="favorite-reference-position">
-    <%= link_to item_path(item.id), class: "card-img-top" do %>
-      <%= image_tag item.get_image(200,280), class: "card-img-top" %>
-      <div class="card-body", style="color:black; background-color:#ffe2d5">
-        <h5 class="card-title"><%= item.name %></h5>
-        <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+<% items.each do |item| %>
+      <div class="card-group">
+        <div class="card">
+          <%= link_to item_path(item.id), class:"card-img-top" do %>
+            <%= image_tag item.get_image(200,240), class:"card-img-top" %><br>
+          <% end %>
+          <div class="card-body">
+            <%= item.name%><br>
+            ¥<%= item.price.to_s(:delimited) %>
+          </div>
+        </div>
       </div>
     <% end %>
-  </div>
-  <% end %>
 </div>

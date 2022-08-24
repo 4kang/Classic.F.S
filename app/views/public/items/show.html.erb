@@ -32,7 +32,7 @@
    </table>
    <div class="mt-3" style="padding: 10px; border-top: solid 1px #ccc;">
     <div class="col-8 offset-1 mt-3">
-      <%= f.submit "カートに入れる", class:"btn btn-outline-danger btn-block" %>
+      <%= f.submit "カートに入れる", class: "btn btn-outline-dark btn-block" %>
        <% end %>
 
        <% else %>
@@ -40,7 +40,7 @@
        <% end %>
 
    <!--お気に入り-->
-    <div class="favorite_btn_<%= @item.id %> favorite-size btn btn-outline-danger btn-block">
+    <div class="favorite_btn_<%= @item.id %> favorite-size btn btn-outline-dark btn-block">
       <%= render "public/favorites/favorite", item: @item %>
      </div>
     </div>
