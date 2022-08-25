@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:index]
 
   def index
     @cart = CartItem.where(customer_id: current_customer.id)

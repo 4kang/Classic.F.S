@@ -1,4 +1,8 @@
-
+<div class="notifications">
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
   <div class="container">
   <div class="row">
     <div class="col-2">
@@ -11,9 +15,9 @@
         <h4>New Item</h4>
       </div>
         <%= render "public/items/index", items: @items %>
-        <div class="col-10">
+        <div class="col-12">
           <div class="text-center index-link mt-3">
-           <%= link_to "more  >>",items_path, class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
+           <%= link_to "   more  >>",items_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
           </div>
         </div>
 
