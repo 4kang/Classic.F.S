@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
 
   def search
     @range = params[:range]
@@ -10,5 +10,5 @@ class Public::SearchesController < ApplicationController
       @genres = Genre.looks(params[:search], params[:word])
     end
   end
-  
+
 end
