@@ -21,7 +21,7 @@
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <div class="collapse navbar-collapse justify-content-center">
             <% if customer_signed_in? %>
             <div class="navbar-nav text-light font-weight-bold d-inline-block">
@@ -43,6 +43,21 @@
               <li>
                 <%= link_to cart_items_path, class: "nav-link text-light" do %>
                 <i class="fas fa-shopping-cart fa-lg"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to orders_path, class: "nav-link text-light" do %>
+                <i class="fas fa-history fa-lg"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to addresses_path, class: "nav-link text-light" do %>
+                <i class="fas fa-address-book fa-lg"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-out-alt fa-lg" aria-hidden="true"></i>
                 <% end %>
               </li>
 

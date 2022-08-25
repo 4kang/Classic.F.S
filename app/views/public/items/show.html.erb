@@ -11,26 +11,14 @@
   </div>
 
   <div class="col-3 ml-5">
-   <table>
-    <tbody>
-     <tr>
       <h3><strong><%= @item.name %></strong></h3>
-     </tr>
-     <tr>
-      <td><%= @item.introduction %></td>
-     </tr><br>
-     <tr>
-      <td>
+       <%= @item.introduction %>
        <h3><strong><%= @item.tax_include_price.to_s(:delimited) %>円(税込)</strong></h3>
        <% if @item.is_active == false %>
        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-      </td>
-     </tr><br>
-    </tbody>
-   </table>
-
+       
    <div class="mt-3" style="padding: 10px; border-top: solid 1px #ccc;">
     <div class="col-12 offset-1 mt-3">
       <%= f.submit "カートに入れる", class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>

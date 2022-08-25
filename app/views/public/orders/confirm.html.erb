@@ -1,16 +1,21 @@
 <div class="container mt-5">
-    <h4 class="text-center">注文情報確認</h4>
 
-    <div class="row border border-dark border-bottom-0">
+    <div class="row border border-dark">
+    <div class="col text-center" style="background-color:#faf0e6">
+      注文情報確認
+    </div>
+    </div>
+    <% @total=0 %>
+    <% @cart_items.each do |cart| %>
+    <div class="row border border-dark border-top-0">
      <div class="col text-center border-right border-dark" style="background-color:#faf0e6">商品名</div>
      <div class="col text-center border-right border-dark" style="background-color:#faf0e6">単価(税込)</div>
      <div class="col text-center border-right border-dark" style="background-color:#faf0e6">数量</div>
      <div class="col text-center" style="background-color:#faf0e6">小計</div>
     </div>
-    <div class="row border border-dark">
+    <div class="row border border-top-0 border-dark">
      <div class="col text-center border-right border-dark">
-       <% @total=0 %>
-       <% @cart_items.each do |cart| %>
+
        <%= image_tag cart.item.get_image(100,120) %><%= cart.item.name %>
      </div>
      <div class="col d-flex align-items-center justify-content-center border-right border-dark">
@@ -19,12 +24,13 @@
      <div class="col d-flex align-items-center justify-content-center border-right border-dark">
          <%= cart.amount %>
      </div>
-     <div class="col d-flex align-items-center justify-content-center border-right border-dark">
+     <div class="col d-flex align-items-center justify-content-center border-dark">
          <%= (cart.item.tax_include_price*cart.amount).to_s(:delimited) %>円
          <% @total += cart.item.tax_include_price*cart.amount %>
-         <% end %>
      </div>
     </div>
+        <% end %>
+
 
      <div class="row mt-5">
       <div class="col-4">
