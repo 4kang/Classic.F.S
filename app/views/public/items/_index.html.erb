@@ -1,6 +1,6 @@
-<div class="d-flex flex-wrap justify-content-around">
+<div class=" mb-3 d-flex flex-wrap justify-content-around">
 <% items.each do |item| %>
-      <div class="card-group">
+      <div class="card-group mt-5">
         <div class="card">
           <%= link_to item_path(item.id), class:"card-img-top" do %>
             <%= image_tag item.get_image(200,240), class:"card-img-top" %><br>

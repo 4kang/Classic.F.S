@@ -1,0 +1,85 @@
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-12'>
+     <h4 class="mt-4 bg-light text-dark"><strong>注文履歴詳細</strong></h4><br>
+
+      <table class='table table-hover table-inverse' >
+        <tbody>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.full_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <td>
+              <%= form_with model: @order, url:admin_order_path(@order.id), method: :patch do |f| %>
+               <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+               <%= f.submit "更新", class:"btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>商品名</td>
+            <td>単価(税込)</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td>制作ステータス</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %></td>
+            <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+            <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
+            <td><%= f.submit "更新", class: "btn btn-outline-light bg-success" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <table cellPadding=10>
+        <tr>
+          <th><h4><strong>商品合計</strong></h4></th>
+          <td><h6><%= @total.to_s(:delimited) %>円</h6></td>
+        </tr>
+        <tr>
+          <th><h4><strong>送料</strong></h4></th>
+          <td><h6><%= @order.shipping_fee.to_s(:delimited) %>円</h6></td>
+        </tr>
+        <tr>
+          <th><h4><strong>請求金額合計</strong></h4></th>
+          <td><h6><strong><%= @order.pay_total.to_s(:delimited) %>円</strong></h6></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

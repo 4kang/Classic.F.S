@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = @sale_items.page(params[:page]).per(8)
     @items = Item.all
   end
 

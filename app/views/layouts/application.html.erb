@@ -37,59 +37,67 @@
               <% if customer_signed_in? %>
               <li>
                 <%= link_to customers_my_page_path, class: "nav-link text-light" do %>
-                <i class="fas fa-user-alt fa-lg"></i>
+                <i class="fas fa-user-alt"></i>
+                マイページ
                 <% end %>
               </li>
               <li>
                 <%= link_to cart_items_path, class: "nav-link text-light" do %>
-                <i class="fas fa-shopping-cart fa-lg"></i>
+                <i class="fas fa-shopping-cart"></i>
+                カート
                 <% end %>
               </li>
               <li>
                 <%= link_to orders_path, class: "nav-link text-light" do %>
-                <i class="fas fa-history fa-lg"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to addresses_path, class: "nav-link text-light" do %>
-                <i class="fas fa-address-book fa-lg"></i>
+                <i class="fas fa-history"></i>
+                注文履歴
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
-                <i class="fas fa-sign-out-alt fa-lg" aria-hidden="true"></i>
+                <i class="fas fa-sign-out-alt"></i>
+                ログアウト
                 <% end %>
               </li>
 
                 <% elsif admin_signed_in? %>
                 <li>
-                  <%= link_to '商品一覧', admin_items_path %>
-                </li>
-                <li>
-                  <%= link_to '会員一覧', admin_customers_path %>
-                </li>
-                <li>
-                  <%= link_to 'ジャンル一覧', admin_genres_path %>
-                </li>
-                <li>
-                  <%= link_to '注文履歴一覧', admin_path %>
-                </li>
-                <li>
-                  <%= link_to "ログアウト", destroy_admin_session_path, :method => :delete %>
-                </li>
-                <% else %>
-                <li>
-                  <%= link_to 'ゲストログイン', customers_guest_sign_in_path, method: :post, class: "btn btn-outline-light" %>
-                </li>
-                <li>
-                  <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
-                  <i class="fas fa-user-alt fa-lg"></i>
+                  <%= link_to admin_items_path, class: "nav-link text-light" do %>
+                  商品一覧
                   <% end %>
                 </li>
                 <li>
-                 <%= link_to cart_items_path, class: "nav-link text-light" do %>
-                 <i class="fas fa-shopping-cart fa-lg"></i>
-                 <% end %>
+                  <%= link_to admin_customers_path, class: "nav-link text-light" do %>
+                   会員一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_genres_path, class: "nav-link text-light" do %>
+                  ジャンル一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_path, class: "nav-link text-light" do %>
+                  注文履歴
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_admin_session_path, :method => :delete, class: "nav-link text-light" do %>
+                  ログアウト
+                  <% end %>
+                </li>
+                <% else %>
+                <li>
+                  <%= link_to customers_guest_sign_in_path, method: :post, class: "nav-link text-light" do %>
+                  <i class="far fa-user"></i>
+                  ゲストログイン
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
+                  <i class="fas fa-user-alt"></i>
+                  ログイン
+                  <% end %>
                 </li>
               <% end %>
             </ul>

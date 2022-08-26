@@ -3,11 +3,11 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_detail = OrderDetail.all
-    @total = @order.total_payment - @order.shipping_cost
+    @total = @order.pay_total - @order.shipping_fee
   end
 
   def update
-    @order = Oeder.find(params[:id])
+    @order = Order.find(params[:id])
     if @order.update(order_params)
       if @order.status == "payment_confirmation"
          @order.order_details.each do |order_detail|
