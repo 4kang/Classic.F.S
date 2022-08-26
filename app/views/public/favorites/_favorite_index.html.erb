@@ -5,30 +5,36 @@
 
 
   <div>
-    <table class="table table-bordered">
-       <thead style="background-color:#faf0e6">
-         <tr>
-           <th scope="col"></th>
-           <th colspan="2">商品名</th>
-           <th scope="col">単価</th>
-         </tr>
-       </thead>
-       <tbody>
-         <% current_customer.favorite_items.each do |item| %>
-         <tr>
-           <td>
-             <%= link_to item_path(item.id) do %>
-             <%= image_tag item.get_image(200,200) %>
-             <% end %>
-             </td>
-           <td><%= item.name %></td>
-           <td><%= item.introduction %></td>
-           <td><%= item.tax_include_price.to_s(:delimited) %>円(税込)</td>
-         </tr>
+   <div class="row border border-dark">
+    <div class="col text-center" style="background-color:#faf0e6">
+      おきにいり商品
+    </div>
+    </div>
+    <% current_customer.favorite_items.each do |item| %>
+    <div class="row border border-dark border-top-0">
+     <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6"></div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">商品名</div>
+     <div class="col-5 text-center border-right border-dark" style="background-color:#faf0e6">説明</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">単価</div>
+    </div>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-3 text-center border-right border-dark">
+       <%= link_to item_path(item.id) do %>
+         <%= image_tag item.get_image(200,200) %>
+       <% end %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= item.name %>
+     </div>
+     <div class="col-5 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= item.introduction %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= item.tax_include_price.to_s(:delimited) %>円(税込)
+     </div>
 
-         <% end %>
-       </tbody>
-     </table>
+    </div>
+    <% end %>
 
   </div>
  </div>

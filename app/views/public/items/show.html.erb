@@ -18,7 +18,7 @@
        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-       
+
    <div class="mt-3" style="padding: 10px; border-top: solid 1px #ccc;">
     <div class="col-12 offset-1 mt-3">
       <%= f.submit "カートに入れる", class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
@@ -29,10 +29,8 @@
        <% end %>
 
    <!--お気に入り-->
-    <div class="favorite_btn_<%= @item.id %> favorite-size">
-     <div class="btn btn-block mt-3" style="background-color:#d2b48c">
+    <div class="favorite_btn_<%= @item.id %> favorite-size text-center mt-3" style="background-color:#d2b48c">
       <%= render "public/favorites/favorite", item: @item %>
-     </div>
     </div>
 
     </div>
