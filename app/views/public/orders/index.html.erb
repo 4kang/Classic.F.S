@@ -1,27 +1,43 @@
-<div class="container">
-    <h2>注文履歴一覧</h2>
-    <table class="table table-bordered">
-        <thead class="thead-light">
-            <tr>
-                <th>注文日</th>
-                <th>配送先</th>
-                <th>注文商品</th>
-                <th>支払い金額</th>
-                <th>ステータス</th>
-                <th>注文詳細</th>
-            </tr>
-        </thead>
-        <% @order.each do |order| %>
-        <tbody>
-            <tr>
-                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-                <td>〒<%= order.post_code %><br><%= order.address%><br><%= order.name %><%= order.telephone_number %></td>
-                <td><%@item.each do |item| %><% if item.order_id == order.id %><%= item.item.name %><br><% end %><% end %></td>
-                <td><%= order.pay_total %>円</td>
-                <td><%= order.status_i18n %></td>
-                <td><%= link_to "表示する", order_path(order), class: 'btn btn-success' %></td>
-            </tr>
-        </tbody>
-        <% end %>
-    </table>
+<div class="container mt-5">
+
+    <div class="row border border-dark">
+    <div class="col text-center" style="background-color:#faf0e6">
+      注文履歴一覧
+    </div>
+    </div>
+    <% @order.each do |order| %>
+    <div class="row border border-dark border-top-0">
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">注文日</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">配送先</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">注文商品</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">支払い金額</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">ステータス</div>
+     <div class="col-2 text-center" style="background-color:#faf0e6">注文詳細</div>
+    </div>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-2 text-center border-right border-dark">
+       <%= order.created_at.strftime("%Y/%m/%d") %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      〒<%= order.post_code %><br>
+      <%= order.address%><br>
+      <%= order.name %><%= order.telephone_number %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%@item.each do |item| %>
+       <% if item.order_id == order.id %><%= item.item.name %><br>
+       <% end %>
+      <% end %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= order.pay_total %>円
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+        <%= order.status_i18n %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-dark">
+          <%= link_to "表示する", order_path(order), class: "btn text-light", style: "background-color:#d2b48c" %>
+     </div>
+    </div>
+    <% end %>
 </div>
