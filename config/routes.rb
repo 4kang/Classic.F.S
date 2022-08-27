@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => 'homes#top'
     # address
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :addresses, only:[:new, :index, :edit, :create, :update, :destroy]
     # customer
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
