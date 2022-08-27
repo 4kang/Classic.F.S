@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
     # item
     resources :items, only:[:index, :show] do
+      resources :item_comments, only: [:create, :destroy]
       resource :favorites, only:[:create, :destroy]
       collection do
         get "genre_search" => "items#genre_search"

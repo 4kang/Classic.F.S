@@ -34,9 +34,12 @@
       <%= render "public/favorites/favorite", item: @item %>
      </div>
     </div>
-
     </div>
    </div>
-
   </div>
  </div>
+ <!--レビュー-->
+
+<%= render "public/item_comments/comment", item: @item, item_comment: @item_comment %>
+
+<%= render "public/item_comments/comment_show", item: @item, item_comment: @item_comment %>

@@ -1,0 +1,20 @@
+<%= form_with(model: [item, item_comment], url: item_item_comments_path(item), local: true) do |f| %>
+
+    <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
+    <div id="rating-form">
+        <label>評価：</label>
+        <%# scoreNameの値をhidden_fieldでカラムに送っている %>
+        <%= f.hidden_field :rate, :value => 'score' %>
+    </div>
+
+    <%= f.submit "投稿する" %>
+<% end %>
+
+
+<script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'product_comment[rate]'
+    });
+</script>

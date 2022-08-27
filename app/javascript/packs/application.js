@@ -21,6 +21,3 @@ require('packs/raty')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-//= require jquery       #追加
-//= require jquery_ujs
