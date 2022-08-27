@@ -1,55 +1,47 @@
+<div style="padding: 10px; border-bottom: solid 1px #ccc;">
+  <div class="text-center">
+   <div class="container mt-5">
+   <h5>アドレス一覧</h5>
+   </div>
+  </div>
+</div>
+
 <div class="container mt-5">
   <div class="row">
-    <div class="p-1 mb-1 bg-light text-dark">
-      <h5 class=".col-lg-8 font-weight-bold">配送先登録/一覧</h5>
+    <div class="col-12">
+      <!--カート一覧-->
+　　<% @addresses.each do |address| %>
+    <div class="row border border-dark">
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">郵便番号</div>
+     <div class="col-4 text-center border-right border-dark" style="background-color:#faf0e6">住所</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">宛名</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">電話番号</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">操作</div>
     </div>
-  </div>
-
-<%= form_with model:@address, url: '/addresses', method: :post do |f| %>
-  <div class="row mb-1">
-    <p class=".col-lg-8">郵便番号(ハイフンなし)</p>
-         <label for="exampleFormControlInput1"><%= f.text_field :post_code, id: "post_code" %></label>
-  </div>
-  <div class="row mb-1">
-    <p class=".col-lg-8">住所</p>
-        <label for="exampleFormControlInput1"><%= f.text_field :address, id: "address" %></label>
-  </div>
-  <div class="row mb-1">
-    <p class=".col-lg-8">宛名</p>
-        <label for="exampleFormControlInput1"><%= f.text_field :name, id: "" %></label>
-   </div>
-   <div class="row mb-1">
-    <p class=".col-lg-8">宛名</p>
-        <label for="exampleFormControlInput1"><%= f.text_field :telephone_number, id: "telephone_number" %></label>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+　　　<%= address.post_code %>
+     </div>
+     <div class="col-4 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= address.address %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= address.name %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= address.telephone_number %>
+     </div>
+     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+        <%= link_to '編集', edit_address_path(address.id), class: "btn text-light", style: "background-color:#d2b48c" %>
+        <%= link_to '削除', address_path(address.id), method: :delete, class: "btn text-light ml-2", style: "background-color:#d2b48c" %>
+     </div>
     </div>
-
-    <p class=".col-lg-8">
-       <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
-    </p>
-  </div>
-
     <% end %>
 
-<table class="table table-bordered">
-  <thead class="thead-light">
-  <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-    <th></th>
-  </tr>
-  <% @addresses.each do |address| %>
-  <tr>
-    <td><%= address.post_code %></td>
-    <td><%= address.address %></td>
-    <td><%= address.name %></td>
-    <td><%= address.telephone_number %></td>
-        <%= link_to '編集する', edit_address_path(address.id), class: "btn btn-sm btn-success" %>
-        <%= link_to '削除する', address_path(address.id), method: :delete, class: "btn btn-sm btn-danger" %>
-    </td>
-  </tr>
-  <% end %>
-  </thead>
-</table>
-
+    </div>
+  </div>
+  <div class="row">
+  <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
 </div>
+</div>
+

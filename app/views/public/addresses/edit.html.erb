@@ -1,15 +1,42 @@
-配送先変更
-<%= form_with model: @address, local: true do |f| %>
+<div class="container mt-5">
+  <%= form_with model: @address, local: true do |f| %>
+  <div class="row border border-dark">
+   <div class="col-4" style="background-color:#faf0e6">
+    <p class="text-right">郵便番号(ハイフン無し)</p>
+   </div>
+   <div class="col-6">
+     <%= f.text_field :post_code %>
+   </div>
+  </div>
+  <div class="row border border-dark border-top-0">
+   <div class="col-4" style="background-color:#faf0e6">
+    <p class="text-right">住所</p>
+   </div>
+   <div class="col-6">
+     <%= f.text_field :address %>
+   </div>
+  </div>
+  <div class="row border border-dark border-top-0">
+   <div class="col-4" style="background-color:#faf0e6">
+    <p class="text-right">宛名</p>
+   </div>
+   <div class="col-6">
+     <%= f.text_field :name %>
+   </div>
+  </div>
+  <div class="row border border-dark border-top-0">
+   <div class="col-4" style="background-color:#faf0e6">
+    <p class="text-right">電話番号</p>
+   </div>
+   <div class="col-6">
+     <%= f.text_field :telephone_number %>
+   </div>
+  </div>
+  <div class="text-center">
+    <%= f.submit '編集を保存する', class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+  </div>
+  <% end %>
 
-郵便番号(ハイフン無し)
-<%= f.text_field :post_code %>
-住所
-<%= f.text_field :address %>
-宛名
-<%= f.text_field :name %>
-電話番号
-<%= f.text_field :telephone_number %>
-
-<%= f.submit '保存' %>
-
-<% end %>
+<div class="row">
+  <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+</div>
