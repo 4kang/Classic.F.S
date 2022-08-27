@@ -1,0 +1,25 @@
+<% item.item_comments.each do |item_comment| %>
+    <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
+        <%# rateを表示 %>
+        <div class="review-rating" data-score="<%= item_comment.rate %>">評価：</div>
+
+        <div class="text-left">
+            <p>投稿者：<%= item_comment.customer.full_name %></p>
+            <p><%= item_comment.comment %></p>
+        </div>
+
+        <div class="text-right">
+            <p>
+                投稿日：<%= item_comment.created_at.strftime('%Y/%m/%d') %> |
+                <% if item_comment.customer == current_customer %>
+                    <%= link_to item_item_comment_path(item_comment.item, item_comment), method: :delete, class: "btn btn-sm btn-danger" do %>
+                        コメント削除 <i class="fas fa-trash"></i>
+                    <% end %>
+                <% end %>
+            </p>
+        </div>
+    </div>
+
+    <div class="pb-2"></div>
+
+<% end %>

@@ -1,3 +1,10 @@
+<p>
+  <%= link_to "Topページ＞", root_path, class: "text-dark" %>
+  <%= link_to "マイページ＞", customers_my_page_path, class: "text-dark" %>
+  <%= link_to "アドレス帳＞", addresses_path, class: "text-dark" %>
+  アドレス編集
+</p>
+
 <div class="container mt-5">
   <%= form_with model: @address, local: true do |f| %>
   <div class="row border border-dark">
