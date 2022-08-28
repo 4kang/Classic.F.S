@@ -6,12 +6,17 @@ class Public::ItemCommentsController < ApplicationController
     item_comment.customer_id = current_customer.id
     if item_comment.save!
        flash[:success] = "コメントしました"
-       redirect_to root_path
+       redirect_to item_path(@item.id)
     else
       flash[:success] = "コメントできませんでした"
-      redirect_to root_path
+      redirect_to items_path
     end
 
+  end
+
+  def destroy
+    item_comment = ItemComment.find(params[:id])
+    item_comment.destroy
   end
 
   private

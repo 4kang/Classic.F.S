@@ -13,14 +13,3 @@
  *= require_tree .
  *= require_self
  */
- @import "skippr";
-
-/*table {*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*}*/
-
-.slide-image{
-  height: 100px;
-  width : 50px;
-}

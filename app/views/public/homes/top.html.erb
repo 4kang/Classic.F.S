@@ -7,17 +7,17 @@
       </div>
     </div>
     <!--スライドショー-->
-    <div class="col-10 mt-4">
+    <div class="col-10 mt-5">
       <div class="slider">
         <% @slide_items.each do |item|%>
           <%= link_to image_tag(item.get_image(800, 800)), item_path(item), class: "slide" %>
         <% end %>
       </div>
       <div class="my-5">
-        <h2 class="title title-text text-center">新着商品</h2>
+        <h2 class="title title-text text-center">New Item</h2>
         <%= render "public/items/index", items: @items %>
-        <div class="text-center index-link">
-          <%= link_to "商品一覧",items_path, class: "btn btn-template-index light-shadow py-3",style: "width: 60%"%>
+        <div class="text-center">
+          <%= link_to "more",items_path, class: "btn btn-block text-light mt-3", style: "background-color:#d2b48c" %>
         </div>
       </div>
     </div>
@@ -27,13 +27,13 @@
 <script>
  $(function() {
     $('.slider').slick({
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
+        autoplay: true,         //自動再生
+        autoplaySpeed: 2000,    //自動再生のスピード
+        speed: 800,             //スライドするスピード
+        dots: true,             //スライドしたのドット
+        arrows: true,           //左右の矢印
+        infinite: true,         //スライドのループ
+        pauseOnHover: false,
     });
-    
-    $('.slick-dots li').on('mouseover', function() {
-    $('.a').slick('goTo', $(this).index());
-  });
 });
 </script>
