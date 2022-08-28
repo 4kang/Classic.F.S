@@ -7,6 +7,8 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    @sale_items = Item.where(is_active: 0)
+    @items = @sale_items.page(params[:page]).per(4)
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @item_comments = @item.item_comments

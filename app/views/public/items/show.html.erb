@@ -38,11 +38,23 @@
    </div>
   </div>
  </div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center mt-5">Other Item</h4>
+      <%= render "public/items/index", items: @items %>
+    </div>
+  </div>
+</div>
+
  <!--レビュー-->
 
-<%= render "public/item_comments/comment" %>
-
-<div class="comment-container">
+<div class="comment-container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h4 class="text-center"></h4>
+      <%= render "public/item_comments/comment" %>
   <% @item_comments.each do |c| %>
     <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
         <div class="review-rating" data-score="<%= c.rate %>">評価：<%= c.rate %></div>
@@ -74,13 +86,16 @@
 
     <%= f.submit "投稿する" %>
   <% end %>
-</div>
 
-<script>
+  <script>
     $('#rating-form').raty({
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
-        scoreName: 'comment[rate]'
+        scoreName: 'item_comment[rate]'
     });
 </script>
 <% end %>
+    </div>
+  </div>
+</div>
+
