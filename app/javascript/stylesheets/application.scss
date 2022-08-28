@@ -8,3 +8,13 @@ body{
 
   //background-image: image-url("hoge.jpg");
 }
+
+.c{
+  height: 600px;
+  width : 100%;
+}
+
+ /*-----------矢印表示----------*/
+.slick-next{ right:0!important; }
+.slick-prev{ left:0!important; }
+.slick-arrow{ z-index:2!important; }

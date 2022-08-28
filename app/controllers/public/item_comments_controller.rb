@@ -6,7 +6,7 @@ class Public::ItemCommentsController < ApplicationController
     item_comment.customer_id = current_customer.id
     if item_comment.save!
        flash[:success] = "コメントしました"
-       redirect_to item_path(@item.id)
+       redirect_to items_path
     else
       flash[:success] = "コメントできませんでした"
       redirect_to items_path
