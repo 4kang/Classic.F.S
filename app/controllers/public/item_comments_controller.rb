@@ -6,10 +6,10 @@ class Public::ItemCommentsController < ApplicationController
     item_comment.customer_id = current_customer.id
     if item_comment.save
        flash[:success] = "コメントしました"
-       redirect_back(fallback_location: item_path)
+       redirect_to item_path
     else
       flash[:success] = "コメントできませんでした"
-      redirect_back(fallback_location: item_path)
+      redirect_to root_path
     end
 
   end
@@ -17,7 +17,7 @@ class Public::ItemCommentsController < ApplicationController
   private
 
   def item_comment_params
-    params.require(:item_comment).permit(:comment, :rate, :customer_id, :item_id)
+    params.require(:item_comment).permit(:comment, :rate)
   end
 
 end

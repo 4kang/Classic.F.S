@@ -40,6 +40,47 @@
  </div>
  <!--レビュー-->
 
-<%= render "public/item_comments/comment", item: @item, item_comment: @item_comment %>
+<%= render "public/item_comments/comment" %>
 
-<%= render "public/item_comments/comment_show", item: @item, item_comment: @item_comment %>
+<div class="comment-container">
+  <% @item_comments.each do |c| %>
+    <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
+        <div class="review-rating" data-score="<%= c.rate %>">評価：<%= c.rate %></div>
+
+        <div class="text-left">
+            <p>投稿者：<%= c.customer_id %></p>
+            <p><%= c.comment %></p>
+        </div>
+
+        <div class="text-right">
+            <p>
+                投稿日：<%= c.created_at.strftime('%Y/%m/%d') %>
+            </p>
+        </div>
+    </div>
+
+    <div class="pb-2"></div>
+
+  <% end %>
+
+<% if customer_signed_in? %>
+  <%= form_with(model: [@item, @item_comment], local: true) do |f| %>
+
+    <%= f.text_area :comment, rows:'5', placeholder: "コメント", class: "form-control form-control-sm" %>
+    <div id="rating-form">
+        <label>評価：</label>
+        <%= f.hidden_field :rate, :value => 'score' %>
+    </div>
+
+    <%= f.submit "投稿する" %>
+  <% end %>
+</div>
+
+<script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'comment[rate]'
+    });
+</script>
+<% end %>
