@@ -6,9 +6,4 @@ class Public::HomesController < ApplicationController
     @slide_items = Item.order('RANDOM()').limit(5)
   end
 
-  def item_params
-    params.require(:item).permit(:item_name, :price, :image)
-  end
-
-
 end
