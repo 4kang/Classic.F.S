@@ -41,4 +41,10 @@ class Item < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :introduction, presence: true, length: { maximum: 200 }
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :is_active, inclusion: { in: [true, false] }
+
+
 end
