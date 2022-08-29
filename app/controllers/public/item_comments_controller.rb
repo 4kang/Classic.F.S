@@ -4,12 +4,12 @@ class Public::ItemCommentsController < ApplicationController
     item = Item.find(params[:item_id])
     item_comment = item.item_comments.build(item_comment_params)
     item_comment.customer_id = current_customer.id
-    if item_comment.save!
+    if item_comment.save
        flash[:success] = "コメントしました"
-       redirect_to items_path
+       redirect_to request.referer
     else
       flash[:success] = "コメントできませんでした"
-      redirect_to items_path
+      redirect_to request.referer
     end
 
   end
