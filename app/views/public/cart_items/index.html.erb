@@ -2,6 +2,15 @@
  <%= link_to "Topページ＞", root_path, class: "text-dark" %>
  カート内
 </p>
+<% if current_customer.cart_items.blank? %>
+  <div class ="container">
+    <div class="row justify-content-center">
+      <p class="text-center p-5">カートに商品がありません</p>
+      <div class="w-100"></div>
+      <%= link_to '買い物を続ける', root_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+    </div>
+  </div>
+<% else %>
 <div class="container mt-5">
  <div class="row">
    <div class='col-12'>
@@ -72,6 +81,7 @@
       <div class="text-right">
        <%= link_to '買い物を続ける', root_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
       </div>
+
       <div class="text-right mt-5">
        <%= link_to '　　購入する　　', new_order_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
       </div>
@@ -80,4 +90,4 @@
    </div>
  </div>
 </div>
-
+<% end %>
