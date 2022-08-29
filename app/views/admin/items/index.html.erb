@@ -1,38 +1,21 @@
-<div class="container mt-5">
- <div class="row">
-   <div class='mx-auto'>
-   商品一覧
+<div class='container mt-5'>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>販売ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-    <tr>
-      <td><%= image_tag item.get_image(100, 100) %></td>
-      <td><%= link_to item.name, admin_item_path(item) %></td>
-      <td><%= item.price %></td>
-      <td><%= item.genre.name %></td>
-      <td>
-        <% if item.is_active == false %>
-         販売中
-        <% else %>
-         販売停止中
-         <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to '商品登録', new_admin_item_path, class:"btn btn-outline-danger" %>
+  <div class='row mb-3'>
+    <div class="col-8 h1">商品一覧</div>
+    <div class="col-1 offset-3">
+      <%= link_to new_admin_item_path do %>
+        <a class="btn btn-light btn-lg" href="/admin/items/new" role="button">＋</a>
+      <% end %>
+    </div>
   </div>
- </div>
+
+  <div class='row'>
+    <%= render 'index', item: @item %>
+  </div>
+  <div class="container">
+    <div class="row">
+        <%= paginate @items %>
+    </div>
+  </div>
+
 </div>
-<%= paginate @items %>
