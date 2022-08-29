@@ -7,10 +7,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_params)
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-      if params[:amount].present?
-         @cart_item.save
+      if @cart_item.save
          redirect_to cart_items_path
       else
          redirect_to request.referer,notice: '個数を入れてください'
@@ -19,7 +18,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(amount: cart_params[:amount].to_i)
+    cart_item.update(amount: cart_item_params[:amount].to_i)
     redirect_to cart_items_path
   end
 
@@ -37,7 +36,7 @@ class Public::CartItemsController < ApplicationController
 
   private
 
-  def cart_params
+  def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
   end
 

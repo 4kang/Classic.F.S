@@ -12,4 +12,6 @@ class CartItem < ApplicationRecord
     tax_include_price * amount
   end
 
+  validates :amount, presence: true
+
 end
