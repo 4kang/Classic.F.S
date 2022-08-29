@@ -8,8 +8,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     cart_items = current_customer.cart_items.all
-    if @order.save
-      cart_items.each do |cart_item|
+    if @order.save!
+      cart_items.each do |cart|
         order_details = OrderDetail.new
         order_details.item_id = cart.item_id
         order_details.order_id = @order.id
