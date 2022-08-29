@@ -1,72 +1,86 @@
 <div class="container">
-    <h2>注文履歴詳細</h2>
-    <strong>注文情報</strong>
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>注文日</th>
-                        <th>配送先</th>
-                        <th>支払い方法</th>
-                        <th>ステータス</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
-                        <td>〒<%= @order.postal_code %><br><%= @order.address%><br><%= @order.name %></td>
-                        <td><%= @order.payment_method_i18n %></td>
-                        <td><%= @order.status_i18n %></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+ <div class="container mt-5">
+
+     <div class="row border border-dark">
+      <div class="col text-center" style="background-color:#faf0e6">
+       注文情報
+      </div>
+     </div>
+
+    <div class="row border border-dark border-top-0">
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">注文日</div>
+     <div class="col-6 text-center border-right border-dark" style="background-color:#faf0e6">配送先</div>
+     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">支払い金額</div>
+     <div class="col-2 text-center" style="background-color:#faf0e6">ステータス</div>
     </div>
-    <strong>請求情報</strong>
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>商品合計</th>
-                        <th>配送料</th>
-                        <th>ご請求額</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= @item.sum(&:subtotal) %>円</td>
-                        <td>800円</td>
-                        <td><%= @order.total_payment %>円</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-2 text-center border-right border-dark">
+       <%= @order.created_at.strftime("%Y/%m/%d") %>
+     </div>
+    <div class="col-6 d-flex align-items-center justify-content-center border-right border-dark">
+      〒<%= @order.post_code %><br>
+      <%= @order.address%><br>
+      <%= @order.name %><br><%= @order.telephone_number %>
     </div>
-    <strong>注文内容</strong>
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>商品</th>
-                        <th>単価（税込）</th>
-                        <th>個数</th>
-                        <th>小計</th>
-                    </tr>
-                </thead>
-                <% @item.each do |item| %>
-                <tbody>
-                    <tr>
-                        <td><%= item.item.name %></td>
-                        <td><%= item.item.tax_include_price %></td>
-                        <td><%= item.amount %></td>
-                        <td><%= (item.item.tax_include_price*item.amount).to_s(:delimited) %>円</td>
-                    </tr>
-                </tbody>
-                <% end %>
-            </table>
-        </div>
+    <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= @order.payment_method_i18n %>
     </div>
+    <div class="col-2 d-flex align-items-center justify-content-center border-dark">
+      <%= @order.status_i18n %>
+    </div>
+    </div>
+
+
+   <div class="row border border-dark mt-5">
+    <div class="col text-center" style="background-color:#faf0e6">
+      請求情報
+    </div>
+    </div>
+
+    <div class="row border border-dark border-top-0">
+     <div class="col-4 text-center border-right border-dark" style="background-color:#faf0e6">商品合計</div>
+     <div class="col-4 text-center border-right border-dark" style="background-color:#faf0e6">配送料</div>
+     <div class="col-4 text-center" style="background-color:#faf0e6">ご請求額</div>
+    </div>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-4 text-center border-right border-dark">
+      <%= @item.sum(&:subtotal) %>円
+     </div>
+     <div class="col-4 d-flex align-items-center justify-content-center border-right border-dark">
+      800円
+     </div>
+     <div class="col-4 d-flex align-items-center justify-content-center border-dark">
+      <%= @order.pay_total %>円
+     </div>
+    </div>
+
+    <div class="row border border-dark mt-5">
+    <div class="col text-center" style="background-color:#faf0e6">
+      注文内容
+    </div>
+    </div>
+    <% @item.each do |item| %>
+    <div class="row border border-dark border-top-0">
+     <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6">商品</div>
+     <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6">単価（税込）</div>
+     <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6">個数</div>
+     <div class="col-3 text-center" style="background-color:#faf0e6">小計</div>
+    </div>
+    <div class="row border border-top-0 border-dark">
+     <div class="col-3 text-center border-right border-dark">
+       <%= item.item.name %>
+     </div>
+     <div class="col-3 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= item.item.tax_include_price %>
+     </div>
+     <div class="col-3 d-flex align-items-center justify-content-center border-right border-dark">
+      <%= item.amount %>
+     </div>
+     <div class="col-3 d-flex align-items-center justify-content-center border-dark">
+      <%= (item.item.tax_include_price*item.amount).to_s(:delimited) %>円
+     </div>
+
+    </div>
+   <% end %>
+ </div>
 </div>
