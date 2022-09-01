@@ -1,15 +1,16 @@
-<p>
- <%= link_to "Topページ＞", root_path, class: "text-dark" %>
- カート内
-</p>
+<div class="container">
+ <div class="row">
+  <p>
+   <%= link_to "Topページ＞", root_path, class: "text-dark" %>
+   カート内
+  </p>
+  <!--カートが空の時-->
 <% if current_customer.cart_items.blank? %>
-  <div class ="container">
     <div class="row justify-content-center">
       <p class="text-center p-5">カートに商品がありません</p>
       <div class="w-100"></div>
       <%= link_to '買い物を続ける', root_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
     </div>
-  </div>
 <% else %>
 <div class="container mt-5">
  <div class="row">
@@ -64,7 +65,7 @@
      <div class="row justify-content-end">
        <div class="col-3">
          <div class="row border border-dark">
-           <div class="col-md-4" style="background-color:#faf0e6">
+           <div class="col-md-4" styl="background-color:#faf0e6">
               合計金額
             </div>
             <div class="col-md-4 text-right">
@@ -91,3 +92,6 @@
  </div>
 </div>
 <% end %>
+
+ </div>
+</div>

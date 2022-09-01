@@ -1,13 +1,13 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <div class="container">
   <div class="row">
-    <div class="col-2">
+    <div class="col-md-2">
       <div class="mt-5">
         <%= render 'public/items/genre',genres: @genres %>
       </div>
     </div>
     <!--スライドショー-->
-    <div class="col-10 mt-5">
+    <div class="col-md-10 mt-5">
       <div class="slider">
        <div class="b"><img class="c" src="<%=asset_path("test3.jpg")%>"></div>
        <div class="b"><img class="c" src="<%=asset_path("test4.jpg")%>"></div>
