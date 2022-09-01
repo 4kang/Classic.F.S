@@ -9,18 +9,18 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse justify-content-center">
-            <% if customer_signed_in? %>
-            <div class="navbar-nav text-light font-weight-bold d-inline-block">
-              ようこそ、<%= current_customer.last_name %>さん！
-            </div>
-            <% end %>
-          </div>
-          <span class="ml-auto col-4 d-none d-sm-block">
-            <%= render "public/items/search" %>
-          </span>
           <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
+              <div class="collapse navbar-collapse justify-content-center">
+               <% if customer_signed_in? %>
+                <div class="navbar-nav text-light font-weight-bold d-inline-block">
+                 ようこそ、<%= current_customer.last_name %>さん！
+                </div>
+               <% end %>
+              </div>
+              <li>
+                <%= render "public/items/search" %>
+              </li>
               <% if customer_signed_in? %>
               <li>
                 <%= link_to customers_my_page_path, class: "nav-link text-light" do %>
