@@ -9,6 +9,9 @@
       <div class="text-center mb-3">
         <h4>Item</h4>
       </div>
+      <div class="col-12 d-flex justify-content-center mt-5 ">
+        <%= paginate @items %>
+      </div>
         <%= render "public/items/index", items: @items %>
         <div class="row">
          <div class="col-12 d-flex justify-content-center mt-5 ">
