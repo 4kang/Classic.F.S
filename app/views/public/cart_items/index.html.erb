@@ -5,35 +5,42 @@
    カート内
   </p>
   <!--カートが空の時-->
-<% if current_customer.cart_items.blank? %>
-    <div class="row justify-content-center">
-      <p class="text-center p-5">カートに商品がありません</p>
-      <div class="w-100"></div>
-      <%= link_to '買い物を続ける', root_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+  <% if current_customer.cart_items.blank? %>
+   <div class="row justify-content-center">
+    <p class="text-center p-5">カートに商品がありません</p>
+    <div class="w-100">
+     <%= link_to '買い物を続ける', root_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
     </div>
-<% else %>
-<div class="container mt-5">
- <div class="row">
-   <div class='col-12'>
+  <% else %>
+  <div class="container mt-5">
+   <div class="row">
+    <div class='col-12'>
+     <!--カート一覧-->
+     <div class="row border border-dark">
+      <div class="col text-center" style="background-color:#faf0e6">
+       カート内
+      </div>
+     </div>
+     <% @cart.each do |item| %>
+     <div class="row border border-dark border-top-0">
+      <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6"></div>
+      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
+       商品名
+      </div>
+      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
+       単価(税込)
+      </div>
+      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
+       数量
+      </div>
+      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
+       小計
+      </div>
+      <div class="col-1 text-center" style="background-color:#faf0e6"></div>
+     </div>
 
-    <!--カート一覧-->
-    <div class="row border border-dark">
-    <div class="col text-center" style="background-color:#faf0e6">
-      カート内
-    </div>
-    </div>
-    <% @cart.each do |item| %>
-    <div class="row border border-dark border-top-0">
-     <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6"></div>
-     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">商品名</div>
-     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">単価(税込)</div>
-     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">数量</div>
-     <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">小計</div>
-     <div class="col-1 text-center" style="background-color:#faf0e6"></div>
-    </div>
-    <div class="row border border-top-0 border-dark">
-     <div class="col-3 text-center border-right border-dark">
-
+     <div class="row border border-top-0 border-dark">
+      <div class="col-3 text-center border-right border-dark">
        <%= image_tag item.item.get_image(80,100) %>
      </div>
      <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">

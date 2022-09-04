@@ -5,21 +5,21 @@
   アドレス登録
 </p>
 <div class="container mt-5">
-  <%= form_with model:@address, url: '/addresses', method: :post do |f| %>
-  <div class="row border border-dark">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">郵便番号(ハイフン無し)</p>
-   </div>
-   <div class="col-6">
-     <%= f.text_field :post_code, id: "post_code" %>
-   </div>
+ <%= form_with model:@address, url: '/addresses', method: :post do |f| %>
+ <div class="row border border-dark">
+  <div class="col-4" style="background-color:#faf0e6">
+   <p class="text-right">郵便番号(ハイフン無し)</p>
   </div>
+  <div class="col-6">
+   <%= f.text_field :post_code, id: "post_code" %>
+  </div>
+ </div>
   <div class="row border border-dark border-top-0">
    <div class="col-4" style="background-color:#faf0e6">
     <p class="text-right">住所</p>
    </div>
    <div class="col-6">
-     <%= f.text_field :address, id: "address" %>
+    <%= f.text_field :address, id: "address" %>
    </div>
   </div>
   <div class="row border border-dark border-top-0">
@@ -27,7 +27,7 @@
     <p class="text-right">宛名</p>
    </div>
    <div class="col-6">
-     <%= f.text_field :name, id: "" %>
+    <%= f.text_field :name, id: "" %>
    </div>
   </div>
   <div class="row border border-dark border-top-0">
@@ -35,13 +35,14 @@
     <p class="text-right">電話番号</p>
    </div>
    <div class="col-6">
-     <%= f.text_field :telephone_number, id: "telephone_number" %>
+    <%= f.text_field :telephone_number, id: "telephone_number" %>
    </div>
   </div>
   <div class="text-center">
     <%= f.submit 'アドレスを登録する', class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
   </div>
   <% end %>
+</div>
 
 <div class="row">
   <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
