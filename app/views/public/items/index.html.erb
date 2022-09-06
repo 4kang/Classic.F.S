@@ -5,16 +5,16 @@
         <%= render 'public/items/genre',genres: @genres %>
       </div>
     </div>
-    <div class="col-10 mt-4">
+    <div class="col mt-4">
       <div class="text-center mb-3">
         <h4>Item</h4>
       </div>
-      <div class="col-12 d-flex justify-content-center mt-5 ">
+      <div class="col d-flex justify-content-center mt-5 ">
         <%= paginate @items %>
       </div>
         <%= render "public/items/index", items: @items %>
         <div class="row">
-         <div class="col-12 d-flex justify-content-center mt-5 ">
+         <div class="col d-flex justify-content-center mt-5 ">
           <%= paginate @items %>
          </div>
         </div>
