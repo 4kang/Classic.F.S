@@ -8,53 +8,38 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row border border-dark">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">氏名</p>
-   </div>
-   <div class="col-6">
-     <%= @customer.full_name %>
-   </div>
-  </div>
-  <div class="row border border-dark border-top-0">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">Eメールアドレス</p>
-   </div>
-   <div class="col-6">
-     <%= @customer.email %>
-   </div>
-  </div>
-  <div class="row border border-dark border-top-0">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">郵便番号</p>
-   </div>
-   <div class="col-6">
-     <%= @customer.post_code %>
-   </div>
-  </div>
-  <div class="row border border-dark border-top-0">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">住所</p>
-   </div>
-   <div class="col-6">
-     <%= @customer.address %>
-   </div>
-  </div>
-  <div class="row border border-dark border-top-0">
-   <div class="col-4" style="background-color:#faf0e6">
-    <p class="text-right">電話番号</p>
-   </div>
-   <div class="col-6">
-     <%= @customer.telephone_number %>
-   </div>
-  </div>
-
-  <div class="text-right">
-     <%= link_to "編集する", customers_my_page_edit_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
-     <%= link_to "配送先一覧", addresses_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
-  </div>
-
+ <div class="row justify-content-center">
+  <table class="mobile-blocky">
+  <tr>
+   <td>氏名</td>
+   <td><%= @customer.full_name %></td>
+  </tr>
+  <tr>
+   <td>メールアドレス</td>
+   <td><%= @customer.email %></td>
+  </tr>
+  <tr>
+   <td>郵便番号</td>
+   <td><%= @customer.post_code %></td>
+  </tr>
+  <tr>
+   <td>住所</td>
+   <td><%= @customer.address %></td>
+  </tr>
+  <tr>
+   <td>電話番号</td>
+   <td ><%= @customer.telephone_number %></td>
+  </tr>
+ </table>
  </div>
+
+
+ <div class="text-right">
+  <%= link_to "編集する", customers_my_page_edit_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+  <%= link_to "配送先一覧", addresses_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+ </div>
+
+</div>
 
 
   <%= render "public/favorites/favorite_index", item: @item %>
