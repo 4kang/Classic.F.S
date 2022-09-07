@@ -21,50 +21,28 @@
        カート内
       </div>
      </div>
-     <% @cart.each do |item| %>
-     <div class="row border border-dark border-top-0">
-      <div class="col-3 text-center border-right border-dark" style="background-color:#faf0e6"></div>
-      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-       商品名
-      </div>
-      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-       単価(税込)
-      </div>
-      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-       数量
-      </div>
-      <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-       小計
-      </div>
-      <div class="col-1 text-center" style="background-color:#faf0e6"></div>
-     </div>
 
-     <div class="row border border-top-0 border-dark">
-      <div class="col-3 text-center border-right border-dark">
-       <%= image_tag item.item.get_image(80,100) %>
+     <div class="row justify-content-center">
+      <table class="table mobile-blocky">
+       <tbody>
+        <% @cart.each do |item| %>
+        <tr>
+         <td style="text-align: center"><%= image_tag item.item.get_image(100,120) %></td>
+         <td class="text-right"><%= item.item.name %></td>
+         <td class="text-right">￥<%= item.tax_include_price.to_s(:delimited) %></td>
+         <td class="text-right">
+          <%= form_with model: [:public, item], url: cart_item_path(item.id), method: :patch do |f| %>
+           <%= f.hidden_field :item_id, :value => item.id %>
+           <%=f.select :amount ,*[1..10] %>
+           <%= f.submit "変更", class: "btn text-light", style: "background-color:#d2b48c" %>
+          <% end %>
+         </td>
+         <td class="text-right">￥<%= item.subtotal %></td>
+        </tr>
+        <% end %>
+       </tbody>
+      </table>
      </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-      <%= item.item.name %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-      ￥<%= item.tax_include_price.to_s(:delimited) %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-      <%= form_with model: [:public, item], url: cart_item_path(item.id), method: :patch do |f| %>
-        <%= f.hidden_field :item_id, :value => item.id %>
-        <%=f.select :amount ,*[1..10] %>
-        <%= f.submit "変更", class: "btn text-light", style: "background-color:#d2b48c" %>
-       <% end %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-        ￥<%= item.subtotal %>
-     </div>
-     <div class="col-1 d-flex align-items-center justify-content-center border-dark">
-          <%= link_to "取消", cart_item_path(item), method: :delete, class: "btn text-light", style: "background-color:#d2b48c" %>
-          <% @total += item.subtotal %>
-     </div>
-    </div>
-    <% end %>
 
     <div class="col mt-5"></div>
      <!--カート外-->
@@ -72,7 +50,7 @@
      <div class="row justify-content-end">
        <div class="col-3">
          <div class="row border border-dark">
-           <div class="col-md-4" styl="background-color:#faf0e6">
+           <div class="col-md-4" style="background-color:#faf0e6">
               合計金額
             </div>
             <div class="col-md-4 text-right">
