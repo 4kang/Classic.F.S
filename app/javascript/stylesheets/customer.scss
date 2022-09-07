@@ -18,13 +18,13 @@ th, td {
   }
   /* 以下で線を再設定 */
   .mobile-blocky {
-    border: solid 2px #a5d1f1;
+    border: solid 2px #000;
     border-top: none;
   }
   .mobile-blocky th {
-    border-top: solid 2px #a5d1f1;
+    border-top: solid 2px #000;
   }
   .mobile-blocky td {
-    border-top: dashed 1px #a5d1f1;
+    border-top: dashed 1px #000;
   }
 }
