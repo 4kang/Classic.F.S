@@ -1,11 +1,11 @@
  <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
         <div class="mt-4">
           <%= render 'public/items/genre', genres: @genres %>
         </div>
       </div>
-      <div class="col-10">
+      <div class="col">
         <div class="mt-4">
           <% if @search_result.count > 0 %>
             <h5 class=" text-center mb-5">"<%= @search_name %>"の検索結果 1-<%=  @search_result.count %>件</h5>
