@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
 
   def new
     @order = Order.new
