@@ -1,12 +1,11 @@
-<div style="padding: 10px; border-bottom: solid 1px #ccc;">
- <div class="text-center">
-   <div class="container mt-5">
-    <h5>注文履歴一覧</h5>
-   </div>
-  </div>
-</div>
 <div class="container mt-5">
+ 　<div class="row border border-dark">
+    <div class="col-md-12 text-center" style="background-color:#faf0e6">
+      注文履歴履歴一覧
+    </div>
+   </div>
 
+   <div class="row justify-content-center">
     <table class="table mobile-blocky">
        <tbody>
         <% @order.each do |order| %>
@@ -34,4 +33,5 @@
         <% end %>
        </tbody>
       </table>
+     </div>
 </div>
