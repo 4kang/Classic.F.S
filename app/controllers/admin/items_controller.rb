@@ -12,8 +12,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item.id)
+    if @item.save
+    redirect_to admin_item_path(@item.id), notice: "商品の追加に成功しました"
+    else
+     flash[:alert] = "商品の追加に失敗しました"
+     render :new
+    end
 
   end
 
