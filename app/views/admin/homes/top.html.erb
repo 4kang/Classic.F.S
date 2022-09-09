@@ -1,6 +1,36 @@
 <div class="container">
+
   <div class="row mt-5">
-    <div class="col-3">
-      <%= link_to "管理者ログイン", new_admin_session_path %>
+    <div class="col-3 text-center">
+     <% if admin_signed_in? %>
+     <div class="row mt-5">
+       <table class="table">
+        <thead>
+         <tr class="table mobile-blocky">
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+         </tr>
+        </thead>
+       <tbody>
+         <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
+            <td><%= order.customer.full_name %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+     </div>
+     <div class="row justify-content-center">
+      <%= paginate @orders %>
+     </div>
+     <% else %>
+      <%= link_to "管理者ログイン", new_admin_session_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+     <% end %>
     </div>
   </div>
+</div>
