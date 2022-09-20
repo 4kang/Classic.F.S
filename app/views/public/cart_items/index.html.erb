@@ -1,11 +1,12 @@
+<p>
+ <%= link_to "Topページ＞", root_path, class: "text-dark" %>
+ カート内
+</p>
 <div class="container">
  <div class="row">
-  <p>
-   <%= link_to "Topページ＞", root_path, class: "text-dark" %>
-   カート内
-  </p>
-  <!--カートが空の時-->
+  <!--blank?メソッドを使用したオブジェクトが空白の場合はtrueを返し、オブジェクトが空白ではない場合はfalseを返す-->
   <% if current_customer.cart_items.blank? %>
+  <!--カートが空の時-->
    <div class="row justify-content-center">
     <div class="col-12">
      <p class="text-center p-5">カートに商品がありません</p>

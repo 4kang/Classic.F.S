@@ -10,41 +10,41 @@
    アドレス一覧
   </div>
  </div>
+ <!--アドレス一覧-->
 
-   <!--アドレス一覧-->
-　 <div class="row justify-content-center">
-    <table class="table mobile-blocky">
-     <tbody>
-      <% @addresses.each do |address| %>
-      <tr>
-       <td class="text-right">
-        <%= address.post_code %>
-       </td>
-       <td class="text-right">
-        <%= address.address %>
-       </td>
-       <td class="text-right">
-        <%= address.name %>
-       </td>
-       <td class="text-right">
-        <%= address.telephone_number %>
-       </td>
-       <td class="text-right">
-        <%= link_to '編集', edit_address_path(address.id), class: "btn text-light", style: "background-color:#d2b48c" %>
-        <%= link_to '削除', address_path(address.id), method: :delete, class: "btn text-light ml-2", style: "background-color:#d2b48c" %>
-       </td>
-      </tr>
-      <% end %>
-     </tbody>
-    </table>
-   </div>
+ <div class="row justify-content-center">
+  <table class="table mobile-blocky">
+   <tbody>
+    <% @addresses.each do |address| %>
+     <tr>
+      <td class="text-right">
+       <%= address.post_code %>
+      </td>
+      <td class="text-right">
+       <%= address.address %>
+      </td>
+      <td class="text-right">
+       <%= address.name %>
+      </td>
+      <td class="text-right">
+       <%= address.telephone_number %>
+      </td>
+      <td class="text-right">
+       <%= link_to '編集', edit_address_path(address.id), class: "btn text-light", style: "background-color:#d2b48c" %>
+       <%= link_to '削除', address_path(address.id), method: :delete, class: "btn text-light ml-2", style: "background-color:#d2b48c" %>
+      </td>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
 
-   <div class="text-right">
-    <%= link_to "アドレス登録", new_address_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
-   </div>
+ <div class="text-right">
+  <%= link_to "アドレス登録", new_address_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+ </div>
 
-  <div class="row">
-   <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
-  </div>
+ <div class="row">
+  <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+ </div>
 </div>
 
