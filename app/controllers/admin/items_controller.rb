@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
     @item = Item.new
@@ -15,7 +16,7 @@ class Admin::ItemsController < ApplicationController
     if @item.save
     redirect_to admin_item_path(@item.id), notice: "商品の追加に成功しました"
     else
-     flash[:alert] = "商品の追加に失敗しました"
+     flash[:notice] = "商品の追加に失敗しました"
      render :new
     end
 

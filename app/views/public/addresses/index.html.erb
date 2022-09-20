@@ -1,66 +1,50 @@
-<div style="padding: 10px; border-bottom: solid 1px #ccc;">
  <p>
   <%= link_to "Topページ＞", root_path, class: "text-dark" %>
   <%= link_to "マイページ＞", customers_my_page_path, class: "text-dark" %>
   アドレス帳
  </p>
- <div class="text-center">
-  <div class="container mt-5">
-   <h5>アドレス一覧</h5>
-  </div>
- </div>
-</div>
 
 <div class="container mt-5">
- <div class="row">
-  <%= link_to "アドレス登録", new_address_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+ <div class="row border border-dark">
+  <div class="col-md-12 text-center" style="background-color:#faf0e6">
+   アドレス一覧
+  </div>
  </div>
- <div class="row">
-  <div class="col-12">
-   <!--アドレス一覧-->
-　 <% @addresses.each do |address| %>
-　 <div class="row border border-dark">
-　  <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-　   郵便番号
-　  </div>
-　  <div class="col-4 text-center border-right border-dark" style="background-color:#faf0e6">
-　   住所
-　  </div>
-　  <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-　   宛名
-　  </div>
-　  <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-　   電話番号
-　  </div>
-　  <div class="col-2 text-center border-right border-dark" style="background-color:#faf0e6">
-　   操作
-　  </div>
 
-   </div>
-    <div class="row border border-top-0 border-dark">
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-　　　<%= address.post_code %>
-     </div>
-     <div class="col-4 d-flex align-items-center justify-content-center border-right border-dark">
-      <%= address.address %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-      <%= address.name %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
-      <%= address.telephone_number %>
-     </div>
-     <div class="col-2 d-flex align-items-center justify-content-center border-right border-dark">
+   <!--アドレス一覧-->
+　 <div class="row justify-content-center">
+    <table class="table mobile-blocky">
+     <tbody>
+      <% @addresses.each do |address| %>
+      <tr>
+       <td class="text-right">
+        <%= address.post_code %>
+       </td>
+       <td class="text-right">
+        <%= address.address %>
+       </td>
+       <td class="text-right">
+        <%= address.name %>
+       </td>
+       <td class="text-right">
+        <%= address.telephone_number %>
+       </td>
+       <td class="text-right">
         <%= link_to '編集', edit_address_path(address.id), class: "btn text-light", style: "background-color:#d2b48c" %>
         <%= link_to '削除', address_path(address.id), method: :delete, class: "btn text-light ml-2", style: "background-color:#d2b48c" %>
-     </div>
-    </div>
-   <% end %>
-
-    </div>
+       </td>
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
    </div>
+
+   <div class="text-right">
+    <%= link_to "アドレス登録", new_address_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+   </div>
+
   <div class="row">
-  <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
- </div>
+   <%= link_to "マイページにもどる", customers_my_page_path, class: "btn text-light mt-3", style: "background-color:#d2b48c" %>
+  </div>
 </div>
 

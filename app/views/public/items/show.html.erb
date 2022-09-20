@@ -11,6 +11,7 @@
     </h3>
      <%= @item.introduction %>
     <h3>
+     <!--to_sメソッドで値段(数値)を文字列に変換する-->
      <strong><%= @item.tax_include_price.to_s(:delimited) %>円(税込)</strong>
     </h3>
      <% if @item.is_active == false %>
