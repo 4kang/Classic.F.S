@@ -40,6 +40,10 @@
           <% end %>
          </td>
          <td class="text-right">￥<%= item.subtotal %></td>
+         <td class="text-right">
+          <%= link_to "削除する", cart_item_path(item), method: :delete, class: "btn text-light", style: "background-color:#d2b48c" %>
+         </td>
+          <% @total += item.subtotal %>
         </tr>
         <% end %>
        </tbody>
