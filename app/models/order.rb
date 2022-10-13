@@ -9,7 +9,6 @@ class Order < ApplicationRecord
   # 注文ステータス｛入金待ち、入金確認、準備中、発送準備中｝
   enum status: {waiting_for_deposit: 0, payment_confirmation: 1, in_production: 2, preparing_to_ship: 3, sent: 4}
 
-  validates :post_code
   validates :address, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true
